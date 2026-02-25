@@ -1,0 +1,215 @@
+/* ===================== */
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+/* ===================== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background:
+        radial-gradient(circle at 50% 0,
+            transparent 35px,
+            #efeaff 36px);
+    border-radius: 24px 24px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+    /* Изменено с 42px на 32px */
+    height: 56px;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+/* Контейнер для левых кнопок (мобильная версия) */
+.nav-left {
+    display: flex;
+    gap: 42px;
+}
+
+/* Контейнер для правых кнопок (мобильная версия) */
+.nav-right {
+    display: flex;
+    gap: 42px;
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #5F33E1;
+    opacity: 0.6;
+    transition: all 0.2s;
+    width: 24px;
+    /* Фиксированная ширина для мобильных */
+    height: 24px;
+    /* Фиксированная высота для мобильных */
+    position: relative;
+    top: 0;
+    /* Сбрасываем позицию */
+}
+
+.nav-item.active {
+    opacity: 1;
+    color: #6c4eff;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Кнопка плюса (только мобильная) */
+.nav-plus {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #6c4eff;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 10px 18px 0px #5F33E17D;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.2s;
+}
+
+.nav-plus:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+.nav-plus:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+.plus-icon {
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.save {
+    width: 16px;
+    height: 13px;
+    angle: 0 deg;
+    opacity: 1;
+    top: 749px;
+    left: 180px;
+
+}
+
+/* ===================== */
+/* ДЕСКТОПНАЯ ВЕРСИЯ */
+/* ===================== */
+.bottom-nav-desktop {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 348px;
+    height: 66px;
+    background: #EEE9FF;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(4, 40px);
+    /* 4 колонки по 40px */
+    gap: 36px;
+    /* Расстояние между колонками 36px */
+    align-items: center;
+    justify-content: center;
+    /* Центрируем сетку */
+    padding: 1px 0;
+    /* 1px сверху и снизу */
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+/* Навигационный элемент для десктопа (только иконки) */
+.nav-item-desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #5F33E1;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    /* Только иконка без текста */
+    margin-top: 1px;
+    /* 1px сверху */
+}
+
+.nav-item-desktop:hover {
+    opacity: 0.8;
+}
+
+.nav-item-desktop.active {
+    opacity: 1;
+    color: #6c4eff;
+}
+
+/* Иконка для десктопа */
+.nav-icon-desktop {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SVG внутри иконки для десктопа */
+.nav-icon-desktop svg {
+    width: 40px;
+    /* Иконка 40x40 на десктопе */
+    height: 40px;
+    flex-shrink: 0;
+}
+
+/* ===================== */
+/* МЕДИА-ЗАПРОСЫ */
+/* ===================== */
+/* На экранах меньше 768px - только мобильная версия */
+@media (max-width: 767px) {
+    .bottom-nav-desktop {
+        display: none !important;
+    }
+
+    .bottom-nav {
+        display: flex;
+    }
+}
+
+/* На экранах больше 768px - только десктопная версия */
+@media (min-width: 768px) {
+    .bottom-nav {
+        display: none !important;
+    }
+
+    .bottom-nav-desktop {
+        display: grid;
+    }
+}
+
+/* ===================== */
+/* ОБЩИЕ СТИЛИ ДЛЯ SVG */
+/* ===================== */

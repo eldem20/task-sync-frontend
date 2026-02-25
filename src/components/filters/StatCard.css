@@ -1,0 +1,121 @@
+/* ===================== */
+/* БАЗОВЫЕ СТИЛИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ */
+/* ===================== */
+.filter-tab {
+    width: 155px;
+    height: 94px;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 32px 0px #0000000A;
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.filter-title {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    color: #24252C;
+}
+
+.filter-value {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #24252C;
+}
+
+.filter-tab.active {
+    background-color: #5F33E1;
+}
+
+.filter-tab.active .filter-title {
+    color: white;
+}
+
+.filter-tab.active .filter-value {
+    color: white;
+}
+
+/* ===================== */
+/* СТИЛИ ДЛЯ ДЕСКТОПНОЙ ВЕРСИИ (286×141px) */
+/* ===================== */
+.filter-tab.desktop {
+    width: 286px;
+    height: 141px;
+    border-radius: 15px;
+    padding: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 32px 0px #0000000A;
+    position: relative;
+}
+
+.filter-tab.desktop .filter-title {
+    width: 133px;
+    height: 27px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #24252C;
+    display: flex;
+    align-items: center;
+}
+
+.filter-tab.desktop .filter-value {
+    width: 222px;
+    height: 60px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 60px;
+    color: #24252C;
+    display: flex;
+    align-items: center;
+}
+
+/* Активное состояние для десктопа */
+.filter-tab.desktop.active {
+    background-color: #5F33E1;
+    box-shadow: 0px 4px 32px 0px rgba(95, 51, 225, 0.3);
+}
+
+.filter-tab.desktop.active .filter-title,
+.filter-tab.desktop.active .filter-value {
+    color: white;
+}
+
+/* ===================== */
+/* АДАПТИВНОСТЬ */
+/* ===================== */
+@media (max-width: 767px) {
+    .filter-tab.desktop {
+        /* На мобильных устройствах десктопные стили не применяются */
+        width: 155px;
+        height: 94px;
+        padding: 16px;
+    }
+    
+    .filter-tab.desktop .filter-title {
+        font-size: 14px;
+        margin-bottom: 4px;
+        width: auto;
+        height: auto;
+    }
+    
+    .filter-tab.desktop .filter-value {
+        font-size: 32px;
+        width: auto;
+        height: auto;
+        line-height: normal;
+    }
+}

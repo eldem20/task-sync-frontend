@@ -1,0 +1,380 @@
+/* TasksPage.css - ОЧИЩЕННЫЙ И ОБНОВЛЕННЫЙ */
+
+.tasks-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
+.tasks-content {
+  padding: 20px;
+  padding-bottom: 100px;
+}
+
+.week-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.nav-arrow {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #5F33E1;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 9px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  transition: all 0.2s;
+}
+
+.nav-arrow:hover {
+  background-color: #EDE8FF;
+}
+
+.week-range {
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  flex-grow: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.week-range:hover {
+  color: #5F33E1;
+}
+
+.calendar-days {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+  padding: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.day-card {
+  width: 64px;
+  height: 84px;
+  border-radius: 15px;
+  flex-shrink: 0;
+}
+
+.priority-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: none;
+  background: #EDE8FF;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #5F33E1;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  margin: 2px;
+}
+
+.filter-btn.active {
+  background: #6c4eff;
+  color: white;
+  border-color: #6c4eff;
+}
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.no-tasks {
+  text-align: center;
+  color: #666;
+  font-family: 'Lexend Deca', sans-serif;
+  padding: 40px 0;
+}
+
+/* Расширенный календарь */
+.expanded-calendar-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expanded-calendar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.expanded-calendar-content {
+  position: relative;
+  z-index: 1001;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 70%;
+  max-width: 350px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== ДЕСКТОПНАЯ ВЕРСИЯ ===== */
+.desktop-tasks-page {
+
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.desktop-divider {
+  width: 100%;
+  height: 1px;
+  background: #000000;
+  margin-bottom: 30px;
+}
+
+/* ОБЪЕДИНЕННЫЙ КАЛЕНДАРЬ И КОЛОНКИ */
+.combined-calendar-trello {
+  width: 100%;
+  min-height: calc(100vh - 150px);
+  padding: 20px 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scroll-behavior: auto;
+}
+
+.calendar-header-scroll {
+  display: flex;
+  gap: 30px;
+  padding: 0 40px;
+  min-width: fit-content;
+  height: 100%;
+}
+
+.calendar-trello-column-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ЗАГОЛОВОК ДНЯ */
+.calendar-trello-header {
+  background: #f5f5f5;
+  padding: 15px 20px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+  border: 2px solid transparent;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.calendar-trello-header:hover {
+  background: #e8e8e8;
+}
+
+.calendar-trello-header.today {
+  background: #5F33E1;
+  color: white;
+}
+
+
+.calendar-trello-date {
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
+  margin-bottom: 5px;
+  white-space: nowrap;
+}
+
+.calendar-trello-header.today .calendar-trello-date {
+  color: white;
+}
+
+.calendar-trello-count {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.calendar-trello-header.today .calendar-trello-count {
+  color: rgba(255,255,255,0.9);
+}
+
+/* КОЛОНКА С ЗАДАЧАМИ */
+.calendar-trello-column {
+  min-height: 300px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.calendar-trello-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  margin-bottom: 15px;
+}
+
+/* КНОПКА CREATE TASK В КОЛОНКЕ */
+.desktop-create-task.compact {
+  width: 100%;
+  margin-top: 0;
+}
+
+.desktop-create-task.compact form {
+  width: 100%;
+  flex-direction: row;
+  gap: 10px;
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.desktop-create-task.compact input {
+  flex-grow: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 14px;
+}
+
+.desktop-create-task.compact button {
+  padding: 8px 16px;
+  background: #5F33E1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.desktop-create-task.compact button:hover {
+  background: #4a24d9;
+}
+
+/* BOTTOM NAV ДЛЯ ДЕСКТОПА */
+.desktop-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* DnD стили */
+.droppable-column {
+  min-height: 100px;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+.droppable-column.drag-over {
+  background-color: rgba(95, 51, 225, 0.1);
+ 
+}
+
+.draggable-task {
+    position: relative !important; /* Принудительно установить position */
+    touch-action: none;
+    user-select: none;
+    /* Если нужно, можно добавить z-index */
+    z-index: 0; /* Базовый z-index для задач */
+}
+
+.draggable-task.dragging {
+    z-index: 100; /* Повысить при перетаскивании */
+    opacity: 0.8;
+}
+
+/* Скрываем десктопные элементы на мобильных */
+@media (max-width: 767px) {
+  .desktop-tasks-page {
+    display: none !important;
+  }
+}
+
+/* Скрываем мобильные элементы на десктопе */
+@media (min-width: 768px) {
+  .week-navigation,
+  .calendar-days,
+  .priority-filters,
+  .tasks-content {
+    display: none !important;
+  }
+}
+
+/* Стили для скролла */
+.combined-calendar-trello::-webkit-scrollbar {
+  height: 8px;
+}
+
+.combined-calendar-trello::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.combined-calendar-trello::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.combined-calendar-trello::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Убираем z-index у задачи, когда открыта модалка удаления */
+.task-item.modal-open {
+    position: relative !important;
+    z-index: -1 !important; /* Отрицательный z-index уводит на задний план */
+    opacity: 0.3 !important; /* Делаем полупрозрачной */
+    pointer-events: none !important; /* Отключаем клики */
+}
+
+/* Чекбокс всё ещё должен быть кликабельным */
+.task-item.modal-open .task-checkbox {
+    pointer-events: auto !important;
+    opacity: 1 !important;
+}

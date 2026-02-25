@@ -1,0 +1,295 @@
+
+.home-page {
+    min-height: 100vh;
+    background: white;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+.home-page > header {
+   
+}
+
+
+.home-page-content {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.filters-grid {
+    margin-bottom: 32px;
+    
+}
+
+.stat {
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.filters-row {
+    display: flex;
+    margin-bottom: 16px;
+    
+}
+
+.section-title {
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.loading,
+.no-tasks {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+/* ===================== */
+/* МОБИЛЬНАЯ ВЕРСИЯ (mobile-first) */
+/* ===================== */
+.home-page.mobile {
+    padding: 0 16px;
+}
+
+.home-page.mobile .stat {
+    font-size: 24px;
+    margin-left: 0;
+}
+
+
+.home-page.mobile .filters-row {
+    display: grid;
+    grid-template-columns: repeat(2, 155px); 
+    gap: 16px;
+    margin-bottom: 16px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.home-page.mobile .filters-grid {
+    margin-top: 24px;
+}
+
+.home-page.mobile .today-tasks {
+    margin-bottom: 80px;
+}
+
+.home-page.mobile .section-title {
+    font-size: 20px;
+}
+
+.home-page.mobile .tasks-list {
+    width: 100%;
+}
+
+.home-page.mobile .task-item {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+
+@media (min-width: 768px) {
+    .home-page.desktop {
+        width: 1923px;
+        min-height: 812px;
+        margin: 20px auto;
+        padding: 0;
+        position: relative;
+        background: white;
+        overflow: visible;
+        box-sizing: border-box;
+    }
+
+    /* BottomNav для десктопа */
+    .home-page.desktop .bottom-nav-desktop {
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 348px;
+        height: 66px;
+        z-index: 1000;
+    }
+
+    /* Основной контейнер с отступами */
+    .home-page.desktop .home-page-content {
+        padding: 29px 44px 40px 54px; 
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    /* Grid layout для двух колонок */
+    .home-page.desktop .content-grid {
+        display: grid;
+        grid-template-columns: 600px 1fr; /* Левая колонка фиксированная */
+        gap: 122px;
+        align-items: start;
+        justify-content: start;
+    }
+
+    /* ===================== */
+    /* ЛЕВАЯ КОЛОНКА - СТАТИСТИКА */
+    /* ===================== */
+    .home-page.desktop .filters-grid {
+        margin: 0;
+        width: 100%;
+        position: relative;
+        min-height: 60px;
+    }
+
+    .home-page.desktop .stat {
+        width: 155px;
+        height: 40px;
+        font-size: 32px;
+        line-height: 100%;
+        margin: 0 0 23px 0;
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 10 !important;
+    }
+
+    /* Контейнер для карточек статистики */
+    .home-page.desktop .filters-row {
+        position: absolute;
+        left: 0;
+        flex-direction: row;
+        gap: 28px;
+        margin-bottom: 0;
+        width: 600px; /* 286px * 2 + 28px */
+    }
+
+    /* Первый ряд карточек (Total, Completed) */
+    .home-page.desktop .filters-row:first-child {
+        top: 63px; /* 173px - 110px */
+    }
+
+    /* Второй ряд карточек (Today, Week) */
+    .home-page.desktop .filters-row:last-child {
+        top: 232px; /* 342px - 110px */
+    }
+
+    /* Карточки статистики - каждая имеет свои стили */
+    .home-page.desktop .stat-card.desktop {
+        width: 286px;
+        height: 141px;
+        border-radius: 15px;
+        flex-shrink: 0;
+    }
+
+    /* ===================== */
+    /* ПРАВАЯ КОЛОНКА - ЗАДАЧИ (ИСПРАВЛЕНО) */
+    /* ===================== */
+    .home-page.desktop .today-tasks {
+        margin: 0;
+        width: 100%;
+        position: relative;
+        left: 0; 
+        margin-left: 15px;
+    }
+
+    .home-page.desktop .tasks-list {
+        width: 348px; /* Фиксированная ширина как у карточек задач */
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        left: 0;
+    }
+
+    /* ЗАГОЛОВОК "Today's Tasks" - ИСПРАВЛЕНО */
+    .home-page.desktop .section-title {
+        position: relative; /* Изменено с absolute на relative */
+        top: auto; /* Сбрасываем absolute позиционирование */
+        left: auto; /* Сбрасываем absolute позиционирование */
+        margin: 0 0 60px 0 !important; /* Добавлен нижний отступ 60px */
+        width: 227px;
+        height: 40px;
+        font-size: 32px;
+        line-height: 100%;
+        background: white;
+        z-index: 2;
+        display: block;
+    }
+
+    /* Контейнер для списка задач - ИСПРАВЛЕНО */
+    .home-page.desktop .tasks-list > .task-item,
+    .home-page.desktop .tasks-list > .loading,
+    .home-page.desktop .tasks-list > .no-tasks {
+        position: relative;
+        top: auto !important; /* Убираем фиксированный top */
+        left: 0;
+        width: 100%;
+        max-width: 348px;
+        margin-top: 0; /* Отступ теперь через margin */
+    }
+
+    /* Каждая задача */
+    .home-page.desktop .task-item {
+        width: 348px;
+        height: 94px;
+        border-radius: 15px;
+        margin-bottom: 16px;
+    }
+
+    /* Первая задача не имеет дополнительного top отступа */
+    .home-page.desktop .task-item:first-of-type {
+        margin-top: 0;
+    }
+
+    /* Загрузка и отсутствие задач - ИСПРАВЛЕНО */
+    .home-page.desktop .loading,
+    .home-page.desktop .no-tasks {
+        width: 348px;
+        text-align: left;
+        padding: 20px 0;
+        margin-top: 0; /* Убираем фиксированный margin-top */
+    }
+}
+
+/* ===================== */
+/* МЕДИА-ЗАПРОС ДЛЯ БОЛЬШИХ ЭКРАНОВ */
+/* ===================== */
+@media (min-width: 1924px) {
+    .home-page.desktop {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 20px auto;
+    }
+}
+
+/* ===================== */
+/* ВСПОМОГАТЕЛЬНЫЕ СТИЛИ */
+/* ===================== */
+/* Убедимся, что все элементы внутри .tasks-list не выходят за границы */
+.tasks-list {
+    overflow: visible;
+}
+
+.task-item {
+    box-sizing: border-box;
+}
+
+/* Гарантия что "Statistics" всегда видно */
+.home-page.desktop .filters-grid .stat {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 100 !important;
+    position: relative !important;
+    color: #333 !important;
+    font-family: 'Lexend Deca', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 32px !important;
+}

@@ -1,0 +1,259 @@
+/* Header.css */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.header-left {
+    width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header-center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.header-right {
+    width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.avatar {
+    width: 46px;
+    height: 46px;
+    opacity: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0;
+}
+
+.welcText {
+    width: 131px;
+    height: 46px;
+    opacity: 1;
+    margin: 10px;
+    font-size: 15px;
+    text-align: left;
+    margin-right: auto;
+}
+
+.notifications {
+    cursor: pointer;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-title {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    font-family: Lexend Deca;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 19px;
+    line-height: 100%;
+}
+
+.avatar-circle {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #F478B8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.avatar-initial {
+    color: white;
+    font-weight: bold;
+}
+
+/* ===================== */
+/* ДЕСКТОПНАЯ ВЕРСИЯ HEADER */
+/* ===================== */
+@media (min-width: 768px) {
+    .header {
+        height: 66px; /* Такая же высота как у BottomNav на десктопе */
+        min-height: 66px;
+        max-height: 66px;
+        padding: 15px;
+        padding-left: 54px;
+        padding-right: 54px;
+        background: white;
+        
+    }
+
+    .header-left {
+        width: auto;
+        min-width: 50px;
+    }
+
+    .header-center {
+        flex: 1;
+        justify-content: flex-start; /* Текст слева на десктопе */
+        padding-left: 0;
+    }
+
+    .header-right {
+        width: auto;
+        min-width: 150px;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+
+    .welcText {
+        width: auto;
+        height: auto;
+        font-size: 16px;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    .avatar-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .page-title {
+        font-size: 24px;
+        text-align: left;
+        padding-left: 0;
+    }
+
+    .notifications {
+        width: 24px;
+        height: 24px;
+    }
+
+    .back-button {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+/* Header.css - добавьте в конец существующего файла */
+
+/* ===================== */
+/* СПЕЦИАЛЬНЫЙ HEADER ДЛЯ ДЕСКТОПА С КНОПКОЙ НАЗАД */
+/* ===================== */
+/* Header.css - добавьте эти стили в конец файла */
+
+/* ===================== */
+/* СПЕЦИАЛЬНЫЙ HEADER ДЛЯ ДЕСКТОПА С КНОПКОЙ НАЗАД */
+/* ===================== */
+.header-desktop-with-back {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header-desktop-with-back {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    min-height: 120px;
+    padding: 20px 54px;
+    box-sizing: border-box;
+    background: white;
+  }
+
+  .desktop-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  .desktop-back-top {
+    margin-bottom: 12px;
+    padding-left: 0;
+  }
+
+  .back-button-desktop {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    transition: background-color 0.2s;
+    border-radius: 50%;
+  }
+
+  .back-button-desktop:hover {
+    background-color: #f5f5f5;
+  }
+
+  .desktop-title-below {
+    text-align: left;
+    width: 100%;
+  }
+
+  .page-title-desktop {
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #24252C;
+    margin: 0;
+    line-height: 1.2;
+    padding-left: 0;
+  }
+
+  .desktop-notifications-right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    min-width: 150px;
+    padding-top: 10px;
+  }
+
+  /* Скрываем обычный Header на десктопе когда показывается специальный */
+  .header:has(.back-button) {
+    display: none !important;
+  }
+}
+
+/* На мобилке всегда показываем обычный Header */
+@media (max-width: 767px) {
+  .header-desktop-with-back {
+    display: none !important;
+  }
+  
+  .header:has(.back-button) {
+    display: flex !important;
+  }
+}

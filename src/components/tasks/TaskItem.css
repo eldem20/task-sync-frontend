@@ -1,0 +1,189 @@
+.task-item {
+   width: 331px;
+    height: 94px;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 32px 0px #0000000A;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: relative;
+  
+}
+
+.task-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.task-title {
+
+    height: 18px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #24252C;
+    opacity: 1;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px; /* или подберите нужное значение */
+    display: block;
+}
+
+.time-icon {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #AB94FF;
+    border-radius: 50%;
+
+
+
+}
+
+.time-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: white;
+    border: none;
+
+}
+
+.task-time {
+
+    height: 14px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 11px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    opacity: 1;
+    color: #AB94FF;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: -15px;
+}
+
+.task-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.task-checkbox {
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    background-color: #FFE9E1;
+    margin-bottom: 8px;
+}
+
+.task-checkbox.checked {
+    background-color: #5F33E1;
+    color: white;
+    border-color: #5F33E1;
+}
+
+.task-priority {
+    width: 54px;
+    height: 14px;
+    border-radius: 7px;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -15px;
+
+    font-family: Lexend Deca;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 9px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+
+}
+
+.task-priority.high {
+    background-color: #FFE9E1;
+    color: #FF7D53;
+    width: 35px;
+    height: 14px;
+    top: 579px;
+    left: 303px;
+    opacity: 1;
+    border-radius: 7px;
+
+
+}
+
+.task-priority.medium {
+    background-color: #EDE8FF;
+    color: #5F33E1;
+    width: 54px;
+    height: 14px;
+    top: 470px;
+    left: 284px;
+    opacity: 1;
+    border-radius: 7px;
+
+}
+
+.task-priority.low {
+    background-color: #E3F2FF;
+    color: #0087FF;
+    width: 37px;
+    height: 14;
+    top: 690px;
+    left: 301px;
+    angle: 0 deg;
+    opacity: 1;
+    border-radius: 7px;
+
+}
+
+.completed .task-title {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.completed .task-time {
+    color: #999;
+}
+
+/* TaskItem.css - ДОБАВИТЬ */
+.task-item.modal-open {
+    position: relative;
+    z-index: auto; /* Сбросить z-index когда модалка открыта */
+    pointer-events: none; /* Отключить взаимодействие с задачей */
+}
+
+.task-item.modal-open .task-checkbox {
+    pointer-events: auto; /* Но оставить возможность клика на чекбокс */
+}
+
+/* Добавьте в TaskItem.css */
+.task-item[data-modal-open="true"] {
+    display: none !important;
+}

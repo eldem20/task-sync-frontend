@@ -1,0 +1,15 @@
+.draggable-task {
+  position: relative;
+  user-select: none;
+  touch-action: none; /* Для мобильных */
+}
+
+.draggable-task:active {
+  cursor: grabbing;
+}
+
+/* Стили для задачи во время перетаскивания */
+.draggable-task[data-dragging="true"] {
+  opacity: 0.5;
+  transform: scale(0.95);
+}

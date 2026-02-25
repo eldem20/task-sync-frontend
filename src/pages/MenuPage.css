@@ -1,0 +1,157 @@
+/* MenuPage.css */
+.content {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 200px;
+  box-sizing: border-box;
+}
+
+.menu-grid {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.menu-column {
+  display: flex;
+  flex-direction: column;
+  row-gap: 17px;
+  align-items: stretch;
+}
+
+.menu-button {
+  width: 154px;
+  height: 44px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 0 12px;
+}
+
+.menu-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.button-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.button-label {
+  height: 17px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  white-space: nowrap;
+  color: #333333;
+  text-align: left;
+  flex-grow: 1;
+}
+
+/* ===================== */
+/* ДЕСКТОПНАЯ ВЕРСИЯ */
+/* ===================== */
+@media (min-width: 768px) {
+  .page-container {
+    min-height: 100vh;
+    padding-bottom: 318px;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .content {
+    padding-top: 0;
+    min-height: calc(100vh - 66px - 252px - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .menu-grid {
+    max-width: 540px;
+    column-gap: 30px;
+  }
+
+  .menu-column {
+    row-gap: 25px;
+  }
+
+  /* ОБЩИЕ СТИЛИ ДЛЯ ВСЕХ КНОПОК НА ДЕСКТОПЕ */
+  .menu-button {
+    width: 236px;
+    height: 63px;
+    border-radius: 15px;
+    padding: 0 20px;
+  }
+
+  /* ПЕРВАЯ КНОПКА В КАЖДОМ СТОЛБЦЕ - БОЛЬШЕ ОТСТУП СЛЕВА */
+  .menu-button.first-button {
+    padding-left: 33px; /* 20px (базовый) + 13px */
+  }
+
+  /* ВТОРАЯ КНОПКА В КАЖДОМ СТОЛБЦЕ - ОБЫЧНЫЙ ОТСТУП */
+  .menu-button.second-button {
+    padding-left: 20px; /* Базовый отступ */
+  }
+
+  .button-icon {
+    width: 36px;
+    height: 35px;
+    margin-right: 15px;
+  }
+
+  .button-icon svg {
+    width: 36px;
+    height: 35px;
+  }
+
+  .button-label {
+    height: 24px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333333;
+  }
+}
+
+/* ===================== */
+/* МОБИЛЬНАЯ ВЕРСИЯ */
+/* ===================== */
+@media (max-width: 767px) {
+  /* ПЕРВАЯ КНОПКА В КАЖДОМ СТОЛБЦЕ - БОЛЬШЕ ОТСТУП СЛЕВА */
+  .menu-button:first-child {
+    padding-left: 20px;
+  }
+
+  /* ВТОРАЯ КНОПКА В КАЖДОМ СТОЛБЦЕ - ОБЫЧНЫЙ ОТСТУП */
+  .menu-button:not(:first-child) {
+    padding-left: 12px;
+  }
+}

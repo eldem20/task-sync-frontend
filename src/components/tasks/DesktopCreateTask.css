@@ -1,0 +1,237 @@
+.desktop-create-btn {
+  width: 279px;
+  height: 26px;
+  background: #5F33E1;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 15px auto;
+  display: block;
+  transition: all 0.2s;
+}
+
+.desktop-create-btn:hover {
+  background: #4a24c7;
+}
+
+.desktop-task-form {
+  width: 279px;
+  height: 194px;
+  background: #5F33E1;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0px 4px 32px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.desktop-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.desktop-form-title {
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+}
+
+.desktop-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.desktop-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.desktop-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex-grow: 1;
+}
+
+.desktop-form-group {
+  width: 100%;
+}
+
+.desktop-name-input {
+  width: 100%;
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 12px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.desktop-name-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.desktop-name-input:focus {
+  outline: none;
+  border-color: white;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.desktop-priority-label {
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 13px;
+  color: white;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.desktop-priority-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.desktop-priority-btn {
+  height: 21px;
+  border: none;
+  border-radius: 7px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: all 0.2s;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.desktop-priority-btn.high {
+  background: #FFE9E1;
+  color: #FF7D53;
+}
+
+.desktop-priority-btn.high.active {
+  background: #FF7D53;
+  color: white;
+}
+
+.desktop-priority-btn.medium {
+  background: #EDE8FF;
+  color: #5F33E1;
+
+
+
+}
+
+.desktop-priority-btn.medium.active {
+  background: white;
+  color: #0087FF;
+}
+
+.desktop-priority-btn.low {
+  background: #E3F2FF;
+  color: #0087FF;
+}
+
+.desktop-priority-btn.low.active {
+  background: #0087FF;
+  color: white;
+}
+
+.desktop-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.desktop-cancel-btn {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 12px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.desktop-cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.desktop-submit-btn {
+  padding: 6px 12px;
+  background: white;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 12px;
+  color: #5F33E1;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.desktop-submit-btn:disabled {
+  background: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
+.desktop-submit-btn:not(:disabled):hover {
+  background: #f0f0f0;
+}
+
+
+.desktop-form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.desktop-submit-icon-btn {
+  width: 67px;
+  height: 23px;
+  border-radius: 7px;
+  background-color: #FEFEFE;
+  border: 1px solid #5F33E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.desktop-submit-icon-btn:hover:not(:disabled) {
+  background-color: #5F33E1;
+}
+
+.desktop-submit-icon-btn:hover:not(:disabled) svg path {
+  fill: #FEFEFE;
+}
+
+.desktop-submit-icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

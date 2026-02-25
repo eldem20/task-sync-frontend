@@ -1,0 +1,220 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;600&display=swap');
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  animation: fadeIn 0.2s ease-out;
+}
+
+
+.modal-card {
+  position: fixed;
+  top: 272px;
+  left: 22px;
+  width: 331px;
+  height: 268px;
+  background: #FFFFFF;
+  border-radius: 15px;
+  box-shadow: 0px 4px 32px 0px rgba(0, 0, 0, 0.04);
+  z-index: 1001;
+  animation: fadeInUp 0.3s ease-out;
+  font-family: 'Lexend Deca', sans-serif;
+  padding: 0;
+}
+
+
+.modal-header {
+  position: absolute;
+  top: 18px; 
+  left: 23px; 
+  width: 139px;
+  height: 24px;
+}
+
+.modal-title {
+  margin: 0;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 100%;
+  color: #000000;
+}
+
+
+.modal-content {
+  position: absolute;
+  top: 59px; 
+  left: 25px; 
+  width: 283px;
+}
+
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+
+.form-label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 100%;
+  color: #24252C;
+}
+
+
+.name-input {
+  width: 283px;
+  height: 30px;
+  padding: 0 15px;
+  border: 1px solid #5F33E1;
+  border-radius: 15px;
+  background: #FFFFFF;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  box-sizing: border-box;
+  box-shadow: 0px 10px 32px 0px rgba(0, 0, 0, 0.04);
+}
+
+.name-input::placeholder {
+  color: rgba(36, 37, 44, 0.58);
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+}
+
+.name-input:focus {
+  outline: none;
+  border-color: #5F33E1;
+}
+
+
+.priority-label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 100%;
+  color: #24252C;
+}
+
+
+.priority-buttons {
+  display: flex;
+  gap: 14px; 
+  margin-top: 4px;
+}
+
+
+.priority-btn {
+  height: 21px;
+  border: none;
+  border-radius: 7px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  transition: all 0.2s;
+}
+
+.priority-btn.high {
+  width: 53px;
+  background: #FFE9E1;
+  color: #FF7D53;
+}
+
+.priority-btn.high.active {
+  background: #FF7D53;
+  color: white;
+}
+
+
+.priority-btn.medium {
+  width: 81px;
+  background: #EDE8FF;
+  color: #5F33E1;
+}
+
+.priority-btn.medium.active {
+  background: #5F33E1;
+  color: white;
+}
+
+
+.priority-btn.low {
+  width: 56px;
+  background: #E1F0FF;
+  color: #0087FF;
+}
+
+.priority-btn.low.active {
+  background: #0087FF;
+  color: white;
+}
+
+
+.modal-action {
+  position: absolute;
+  top: 222px; 
+  left: 109px; 
+  width: 109px;
+  height: 35px;
+}
+
+.submit-check-btn {
+  width: 109px;
+  height: 35px;
+  background: #5F33E1;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.submit-check-btn:disabled {
+  background: #C7C7CC;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.submit-check-btn:not(:disabled):hover {
+  background: #4A24C7;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
