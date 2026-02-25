@@ -4,9 +4,9 @@ import type { ReactNode } from 'react';
 import { authService } from '../services/auth.service';
 import { userService } from '../services/user.service';
 
-// ============= ДОБАВЬ ЭТОТ КОД =============
-// Временный демо-режим для Vercel
-const IS_DEMO_MODE = true; // Поставь true для Vercel, false для локальной разработки
+
+
+const IS_DEMO_MODE = true; 
 
 const DEMO_USER: User = {
     id: 'demo-123',
@@ -16,7 +16,7 @@ const DEMO_USER: User = {
     breakInterval: 10,
     intervalsCount: 7
 };
-// ============================================
+
 
 interface AuthContextType {
     user: User | null;
@@ -41,9 +41,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     useEffect(() => {
         console.log('🔍 AuthProvider: проверка localStorage');
         
-        // ============= ИЗМЕНЕНИЕ =============
         if (IS_DEMO_MODE) {
-            // В демо-режиме пробуем загрузить из localStorage, иначе null
+
             const savedUser = localStorage.getItem('user');
             if (savedUser) {
                 try {
@@ -55,7 +54,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             setIsLoading(false);
             return;
         }
-        // ======================================
+
 
         const savedUser = localStorage.getItem('user');
         const savedToken = localStorage.getItem('accessToken');
@@ -83,10 +82,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         console.log('🚀 AuthProvider.register: запуск');
         setIsLoading(true);
 
-        // ============= ДОБАВЛЕНО =============
+
         if (IS_DEMO_MODE) {
             console.log('🎭 Демо-режим: регистрация');
-            // Просто создаем пользователя в localStorage
+        
             const newUser: User = {
                 id: 'demo-' + Date.now(),
                 email: email,
@@ -102,7 +101,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             setIsLoading(false);
             return;
         }
-        // ======================================
+     
 
         try {
             const response = await authService.register(email, password, name);
@@ -173,10 +172,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         console.log('🚀 AuthProvider.login: запуск');
         setIsLoading(true);
 
-        // ============= ДОБАВЛЕНО =============
+    
         if (IS_DEMO_MODE) {
             console.log('🎭 Демо-режим: логин');
-            // В демо-режиме пускаем всех с любым паролем
+           
             const newUser: User = {
                 id: 'demo-' + Date.now(),
                 email: email,
@@ -192,7 +191,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             setIsLoading(false);
             return;
         }
-        // ======================================
+   
 
         try {
             const response = await authService.login(email, password);
@@ -255,7 +254,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const logout = async () => {
         try {
-            if (!IS_DEMO_MODE) {  // ← ДОБАВЛЕНО
+            if (!IS_DEMO_MODE) {  
                 await authService.logout();
             }
         } catch (error) {
@@ -271,7 +270,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const updateUser = async (userData: Partial<User>) => {
         try {
             if (user) {
-                if (!IS_DEMO_MODE) {  // ← ДОБАВЛЕНО
+                if (!IS_DEMO_MODE) {  
                     await userService.updateProfile(userData);
                 }
                 const updatedUser = { ...user, ...userData };

@@ -2,9 +2,8 @@ import React, { createContext, useState, useEffect, type ReactNode } from 'react
 import type { UserSettings } from '../types';
 import { userService, type StatisticItem, type UserProfileResponse } from '../services/user.service';
 
-// ============= ДОБАВЛЕНО =============
-const IS_DEMO_MODE = true; // true для Vercel, false для локальной разработки
-// =====================================
+
+const IS_DEMO_MODE = true; 
 
 interface UserContextType {
   settings: UserSettings;
@@ -41,9 +40,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     setError(null);
     
     try {
-      // ============= ИЗМЕНЕНО =============
       if (IS_DEMO_MODE) {
-        // В демо-режиме берем из localStorage или ставим дефолт
         const savedSettings = localStorage.getItem('pomodoroSettings');
         if (savedSettings) {
           const parsed = JSON.parse(savedSettings);
@@ -52,7 +49,6 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
           setSettings(defaultSettings);
         }
         
-        // Демо-статистика
         const savedTasks = localStorage.getItem('tasks');
         let tasks = [];
         if (savedTasks) {
@@ -79,7 +75,6 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
           createdAt: new Date().toISOString()
         });
       } else {
-        // Реальный режим
         const profile = await userService.getProfile();
         setUserProfile(profile.user);
 
@@ -94,7 +89,6 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         
         localStorage.setItem('pomodoroSettings', JSON.stringify(userSettings));
       }
-      // =====================================
       
     } catch (err) {
       console.error('Ошибка загрузки профиля:', err);
@@ -120,18 +114,17 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const updateSettings = async (newSettings: Partial<UserSettings>) => {
     try {
-      // ============= ДОБАВЛЕНО =============
+
       if (!IS_DEMO_MODE) {
         await userService.updateProfile(newSettings);
       }
-      // =====================================
+
 
       const updatedSettings = { ...settings, ...newSettings };
       setSettings(updatedSettings);
       
       localStorage.setItem('pomodoroSettings', JSON.stringify(updatedSettings));
       
-      // Не вызываем loadProfile в демо-режиме
       if (!IS_DEMO_MODE) {
         await loadProfile();
       }

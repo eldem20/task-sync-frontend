@@ -2,9 +2,9 @@ import React, { createContext, useContext, useState, useEffect, type ReactNode }
 import type { Task, CreateTaskData, TaskPriority } from '../types';
 import { tasksService } from '../services/tasks.service';
 
-// ============= ДОБАВЛЕНО =============
-const IS_DEMO_MODE = true; // true для Vercel, false для локальной разработки
-// =====================================
+
+const IS_DEMO_MODE = true;
+
 
 interface TasksContextType {
   tasks: Task[];
@@ -41,13 +41,13 @@ export const TasksProvider: React.FC<TasksProviderProps> = ({ children }) => {
         }
       }
 
-      // ============= ИЗМЕНЕНО =============
+
       if (IS_DEMO_MODE) {
-        // В демо-режиме только localStorage
+ 
         setTasks(localTasks);
         console.log('✅ Demo mode: loaded', localTasks.length, 'tasks');
       } else {
-        // В реальном режиме - мержим с сервером
+
         const tasksFromServer = await tasksService.getTasks();
         console.log('🌐 Loaded from server:', tasksFromServer.length, 'tasks');
 
@@ -76,7 +76,6 @@ export const TasksProvider: React.FC<TasksProviderProps> = ({ children }) => {
         
         console.log('✅ Merged total:', allTasks.length, 'tasks');
       }
-      // =====================================
       
     } catch (error) {
       console.error('❌ Failed to load tasks:', error);
@@ -101,7 +100,7 @@ export const TasksProvider: React.FC<TasksProviderProps> = ({ children }) => {
   const addTask = async (taskData: CreateTaskData) => {
     setIsLoading(true);
     try {
-      // ============= ДОБАВЛЕНО =============
+
       if (IS_DEMO_MODE) {
         const newTask: Task = {
           id: 'demo-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
@@ -119,7 +118,7 @@ export const TasksProvider: React.FC<TasksProviderProps> = ({ children }) => {
         setIsLoading(false);
         return;
       }
-      // =====================================
+
 
       const newTask = await tasksService.createTask(taskData);
       const formattedTask: Task = {
@@ -148,13 +147,11 @@ export const TasksProvider: React.FC<TasksProviderProps> = ({ children }) => {
       const taskToUpdate = tasks.find(task => task.id === taskId);
       if (!taskToUpdate) return;
       
-      // ============= ДОБАВЛЕНО =============
       if (!IS_DEMO_MODE) {
         await tasksService.updateTask(taskId, {
           isCompleted: !taskToUpdate.isCompleted
         });
       }
-      // =====================================
       
       const updatedTasks = tasks.map(task =>
         task.id === taskId
@@ -193,11 +190,9 @@ export const TasksProvider: React.FC<TasksProviderProps> = ({ children }) => {
 
   const deleteTask = async (taskId: string) => {
     try {
-      // ============= ДОБАВЛЕНО =============
       if (!IS_DEMO_MODE) {
         await tasksService.deleteTask(taskId);
       }
-      // =====================================
       
       const updatedTasks = tasks.filter(task => task.id !== taskId);
       setTasks(updatedTasks);

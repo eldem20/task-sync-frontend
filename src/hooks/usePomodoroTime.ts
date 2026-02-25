@@ -1,16 +1,16 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { timerService, type PomodoroSession } from '../services/timer.service';
 
-// ============= ДОБАВЛЕНО =============
+
 const IS_DEMO_MODE = true; // true для Vercel
-// =====================================
+
 
 export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, totalIntervals: number = 7) => {
   const [isLoading, setIsLoading] = useState(true);
   const [session, setSession] = useState<PomodoroSession | null>(null);
   const [currentRoundId, setCurrentRoundId] = useState<string>('');
   
-  // Таймерные состояния
+
   const [timeLeft, setTimeLeft] = useState<number>(workSeconds);
   const [isRunning, setIsRunning] = useState(false);
   const [isBreak, setIsBreak] = useState(false);
@@ -18,7 +18,7 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
   
   const timerRef = useRef<number | null>(null);
 
-  // Функция сохранения прогресса
+
   const saveProgress = useCallback(async () => {
     if (!currentRoundId || IS_DEMO_MODE) return;
     
@@ -38,13 +38,13 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
     }
   }, [currentRoundId, isBreak, timeLeft, workSeconds, breakSeconds]);
 
-  // Функция обработки завершения времени
+
   const handleTimeUp = useCallback(async () => {
     console.log('⏰ handleTimeUp called', { isBreak, completedRounds, totalIntervals });
     
     try {
       if (!isBreak) {
-        // Закончилась работа - начинаем перерыв
+
         console.log('💤 Начинается перерыв');
         setIsBreak(true);
         setTimeLeft(breakSeconds);
@@ -57,7 +57,7 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
         }
         
       } else {
-        // Закончился перерыв - раунд полностью завершен
+
         console.log('✅ Раунд завершен!');
         
         const newCompleted = completedRounds + 1;
@@ -71,7 +71,7 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
           });
         }
         
-        // Проверяем, все ли раунды завершены
+
         if (newCompleted >= totalIntervals) {
           console.log('🏆 Все раунды завершены!');
           setIsRunning(false);
@@ -82,19 +82,17 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
             await timerService.updateSession(session.id, { isCompleted: true });
           }
         } else {
-          // Переходим к следующему раунду
+
           console.log('➡️ Переход к следующему раунду');
           setIsBreak(false);
           setTimeLeft(workSeconds);
           
           if (!IS_DEMO_MODE && session) {
-            // В реальном режиме ищем следующий раунд в БД
             const nextRound = session.rounds.find(r => !r.isCompleted && r.id !== currentRoundId);
             if (nextRound) {
               setCurrentRoundId(nextRound.id);
             }
           } else {
-            // В демо-режиме просто обновляем ID
             setCurrentRoundId('demo-round-' + (newCompleted + 1));
           }
         }
@@ -104,14 +102,13 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
     }
   }, [session, currentRoundId, isBreak, completedRounds, workSeconds, breakSeconds, totalIntervals]);
 
-  // Инициализация
+
   useEffect(() => {
     const initTimer = async () => {
       try {
         setIsLoading(true);
         
         if (IS_DEMO_MODE) {
-          // Демо-режим - просто ставим начальные значения
           console.log('🎮 Демо-режим: инициализация таймера', { workSeconds, breakSeconds, totalIntervals });
           setTimeLeft(workSeconds);
           setIsBreak(false);
@@ -121,7 +118,7 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
           return;
         }
         
-        // Реальный режим
+
         const sessionData = await timerService.createOrGetSession();
         setSession(sessionData);
         
@@ -167,7 +164,7 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
     initTimer();
   }, [workSeconds, breakSeconds, totalIntervals]);
 
-  // Основной таймер
+
   useEffect(() => {
     if (!isRunning || !currentRoundId) return;
     
@@ -176,7 +173,7 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
     timerRef.current = window.setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
-          // Время вышло
+
           console.log('⏰ Время вышло!');
           handleTimeUp();
           return isBreak ? breakSeconds : workSeconds;
@@ -194,7 +191,7 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
     };
   }, [isRunning, isBreak, currentRoundId, workSeconds, breakSeconds, handleTimeUp]);
 
-  // Автосохранение
+
   useEffect(() => {
     if (!isRunning || !currentRoundId || IS_DEMO_MODE) return;
     
@@ -205,7 +202,7 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
     return () => clearInterval(saveInterval);
   }, [isRunning, currentRoundId, saveProgress]);
 
-  // Управление таймером
+
   const startTimer = useCallback(() => {
     console.log('▶️ startTimer called');
     setIsRunning(true);
@@ -230,7 +227,6 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
     setIsRunning(false);
     
     if (IS_DEMO_MODE) {
-      // Просто сбрасываем в демо-режиме
       setTimeLeft(workSeconds);
       setIsBreak(false);
       setCompletedRounds(0);
@@ -272,13 +268,12 @@ export const usePomodoroTimer = (workSeconds: number, breakSeconds: number, tota
   const formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
   const getSquareStatus = useCallback((index: number) => {
-    // Визуализация квадратиков
     if (index < completedRounds) {
-      return 'completed'; // Завершенные раунды
+      return 'completed';
     } else if (index === completedRounds && isRunning) {
-      return isBreak ? 'completed' : 'active'; // Текущий раунд
+      return isBreak ? 'completed' : 'active'; 
     } else {
-      return 'empty'; // Будущие раунды
+      return 'empty'; 
     }
   }, [completedRounds, isRunning, isBreak]);
 
